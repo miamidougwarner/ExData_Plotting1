@@ -20,7 +20,6 @@ library(dplyr)
                                sep=";", 
                                stringsAsFactors = FALSE, 
                                na.strings = c("?", "NA")
-#                               nrows = 5
                                )
       
       household.df <- mutate(household.df, event.datetime = dmy(household.df$Date) + hms(household.df$Time))
@@ -33,9 +32,13 @@ library(dplyr)
       # free up memory
       rm(household.df)
       
-      hist(my.household.range$Global_active_power, freq = TRUE, breaks = 12, col = "red", main = "Global Active Power", xlab = "Global Active Power (kilowatts)")
       
       png("plot1.png", width = 480, height = 480)
-      hist(my.household.range$Global_active_power, freq = TRUE, breaks = 12, col = "red", main = "Global Active Power", xlab = "Global Active Power (kilowatts)")
+      hist(my.household.range$Global_active_power, 
+		freq = TRUE, 
+		breaks = 12, 
+		col = "red", 
+		main = "Global Active Power", 
+		xlab = "Global Active Power (kilowatts)")
       dev.off()
 
